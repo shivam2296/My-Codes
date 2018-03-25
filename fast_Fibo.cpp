@@ -28,9 +28,9 @@ using namespace std;
 5. find(all(V1),val);
 6. copy(all(V1),dest_itr);
 */
-int MAT[2][2]={1,1,1,0};
+ll MAT[2][2]={1,1,1,0};
 
-void fibo(int n)
+void fibo(ll n)
 {
     if(n==0||n==1){
         return;
@@ -38,10 +38,10 @@ void fibo(int n)
     if(n&1){
         fibo(n/2);
 
-        int a=MAT[0][0]*MAT[0][0]+MAT[0][1]*MAT[1][0];
-        int b=MAT[0][0]*MAT[0][1]+MAT[0][1]*MAT[1][1];
-        int c=MAT[1][0]*MAT[0][0]+MAT[1][1]*MAT[1][0];
-        int d=MAT[1][0]*MAT[0][1]+MAT[1][1]*MAT[1][1];
+        ll a=MAT[0][0]*MAT[0][0]+MAT[0][1]*MAT[1][0];
+        ll b=MAT[0][0]*MAT[0][1]+MAT[0][1]*MAT[1][1];
+        ll c=MAT[1][0]*MAT[0][0]+MAT[1][1]*MAT[1][0];
+        ll d=MAT[1][0]*MAT[0][1]+MAT[1][1]*MAT[1][1];
 
         MAT[0][0]=a;
         MAT[0][1]=b;
@@ -61,10 +61,10 @@ void fibo(int n)
     else{
         fibo(n/2);
 
-        int a=MAT[0][0]*MAT[0][0]+MAT[0][1]*MAT[1][0];
-        int b=MAT[0][0]*MAT[0][1]+MAT[0][1]*MAT[1][1];
-        int c=MAT[1][0]*MAT[0][0]+MAT[1][1]*MAT[1][0];
-        int d=MAT[1][0]*MAT[0][1]+MAT[1][1]*MAT[1][1];
+        ll a=MAT[0][0]*MAT[0][0]+MAT[0][1]*MAT[1][0];
+        ll b=MAT[0][0]*MAT[0][1]+MAT[0][1]*MAT[1][1];
+        ll c=MAT[1][0]*MAT[0][0]+MAT[1][1]*MAT[1][0];
+        ll d=MAT[1][0]*MAT[0][1]+MAT[1][1]*MAT[1][1];
 
         MAT[0][0]=a;
         MAT[0][1]=b;
@@ -75,7 +75,7 @@ void fibo(int n)
 int main()
 {
 
-    int n;
+    ll n;
     cout<<"Enter n: ";
     cin>>n;
     assert(n>0);
