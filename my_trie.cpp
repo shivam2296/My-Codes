@@ -1,5 +1,4 @@
  //@$hivam
-//Koi toh rok lo...!!!
 
 #include<bits/stdc++.h>
 
