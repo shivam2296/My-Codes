@@ -89,6 +89,21 @@ class Trie{
             else return false;
         }
     }
+
+    void Status(Node* root,string S){
+        if(root==NULL){
+            return;
+        }
+        if(root->word>0){
+            for(int ctr=0;ctr<root->word;ctr++)
+                cout<<S<<endl;
+        }
+        for(int i=0;i<26;i++){
+            if(root->next[i]!=NULL){
+                Status(root->next[i],(S+char('A'+i)));
+            }
+        }
+    }
 public:
 
     Trie(){
@@ -106,6 +121,12 @@ public:
     bool del_str(string str){
         return del(root,str,0);
     }
+    /*Status of the trie*/
+    void status()
+    {
+        Status(root,"");
+    }
+
 };
 
 int main()
@@ -128,10 +149,15 @@ int main()
     T.del_str("SHIVAM");
     T.del_str("SHIV");
     T.del_str("A");
+
     cout<<"\n***Deletion***\n\n";
+
     cout<<"A :"<<T.find_str("A")<<endl;
     cout<<"SHIV :"<<T.find_str("SHIV")<<endl;
     cout<<"SHIVAM :"<<T.find_str("SHIVAM")<<endl;
     cout<<"APPLE :"<<T.find_str("APPLE")<<endl;
     cout<<"SAUMYA :"<<T.find_str("SAUMYA")<<endl;
+
+    cout<<"\n***Status of the trie***\n\n";
+    T.status();
 }
