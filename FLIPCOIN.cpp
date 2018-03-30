@@ -1,4 +1,5 @@
  //@$hivam
+
 //https://www.codechef.com/problems/FLIPCOIN
 
 #include<bits/stdc++.h>
