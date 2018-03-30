@@ -31,7 +31,7 @@ ll query(int node,int l,int r,int i,int j)              //query in [i,j]
     return v1+v2;                               //Return answer using query of left and right child.
 }
 
-void update(int node,int l,int r,int i,int j)  //update [i,j] with value
+void update(int node,int l,int r,int i,int j)  //update [i,j]
 {
     if(lazy[node]){                             //If node is lazy. First, update it.
         tree[node] = r-l+1-tree[node];          //Updated it.
