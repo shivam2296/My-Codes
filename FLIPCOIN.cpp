@@ -1,46 +1,25 @@
  //@$hivam
-//Koi toh rok lo...!!!
+//https://www.codechef.com/problems/FLIPCOIN
 #include<bits/stdc++.h>
 
 using namespace std;
 
 #define ll long long
-#define ii int,int
-#define MOD 1000000007
-#define PI 3.1415926535897932384626433832795028841971693993751
-#define all(arr)  arr.begin(),arr.end()
-#define FIND(arr,v) arr.find(v)!=arr.end()
-#define FOR(i,arr,n) for(i=arr;i<n;i++)
-#define nl cout<<"\n"
-#define spc cout<<" "
-#define check1 cout<<"#"
-#define check2 cout<<"*"
-#define reverse_pq priority_queue<int,vector<int>,greater<int> >
-#define VECTOR vector<int>
-#define SET set<int>
 #define do_it_fast ios_base::sync_with_stdio (false);cin.tie(NULL)
 #define N 500005
 
-/** REMEMBER
-1. next_permutarrtion(all(V1));
-2. search(arrll(V1),all(V2))!=V1.end()
-3. S1.find(S2)
-4. lower_bound(all(V1),val);
-5. find(all(V1),val);
-6. copy(all(V1),dest_itr);
-*/
 int arr[N];
 int tree[4*N];
 bool lazy[4*N];
 
 ll query(int node,int l,int r,int i,int j)              //query in [i,j]
 {
-    if(i > j || l > r || l > j || r < i) return 0;      //Wrong range
+    if(i > j || l > r || l > j || r < i) return 0;      //Wrong range!!!
 
-    if (lazy[node]){                                    //Node is lazy. update it first.
-        tree[node] = (r-l+1)-tree[node];                //Update
-        lazy[node] = 0;                                 //Node has been updated.
-        lazy[node*2] = !lazy[node*2];                   //But, do not update children propagate the laziness.
+    if (lazy[node]){                                    //Node is lazy. update the lazy query first.
+        tree[node] = (r-l+1)-tree[node];                //Query the lazy part.
+        lazy[node] = 0;                                 //Node has been updated, lazy complete.
+        lazy[node*2] = !lazy[node*2];                   //But, do not update children, propagate the laziness.
         lazy[node*2+1] = !lazy[node*2+1];
     }
 
@@ -54,10 +33,10 @@ ll query(int node,int l,int r,int i,int j)              //query in [i,j]
 
 void update(int node,int l,int r,int i,int j)  //update [i,j] with value
 {
-    if(lazy[node]){                             //If node is lazy. First, update it.
-        tree[node] = r-l+1-tree[node];          //Update this node.
+    if(lazy[node]){                             //If node is lazy. First, update the lazy update.
+        tree[node] = r-l+1-tree[node];          //Update this lazy part.
         lazy[node] = false;                     //Updated this node, not lazy now.
-        lazy[node*2] = !lazy[node*2];           //Do not update children, set them as lazy.
+        lazy[node*2] = !lazy[node*2];           //Do not update children, propagate the laziness.
         lazy[(node*2)+1] = !lazy[(node*2)+1];
     }
 
