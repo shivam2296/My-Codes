@@ -16,14 +16,14 @@ ll query(int node,int l,int r,int i,int j)              //query in [i,j]
 {
     if(i > j || l > r || l > j || r < i) return 0;      //Wrong range!!!
 
-    if (lazy[node]){                                    //Node is lazy. update the lazy query first.
-        tree[node] = (r-l+1)-tree[node];                //Query the lazy part.
-        lazy[node] = 0;                                 //Node has been updated, lazy complete.
-        lazy[node*2] = !lazy[node*2];                   //But, do not update children, propagate the laziness.
+    if (lazy[node]){                                    //If node is lazy. First, update it.
+        tree[node] = (r-l+1)-tree[node];                //Updated it.
+        lazy[node] = 0;                                 //Updated this node, not lazy now.
+        lazy[node*2] = !lazy[node*2];                   //Do not update children, propagate the laziness.
         lazy[node*2+1] = !lazy[node*2+1];
     }
 
-    if(l>=i && r<=j)return tree[node];          //Query lies exactly in range.
+    if(l>=i && r<=j)return tree[node];          //Query lies exactly inside range.
 
     ll v1=query(node*2,l,(l+(r-l)/2),i,j);      //Query left child.
     ll v2=query(node*2+1,(l+(r-l)/2)+1,r,i,j);  //Query right child.
@@ -33,8 +33,8 @@ ll query(int node,int l,int r,int i,int j)              //query in [i,j]
 
 void update(int node,int l,int r,int i,int j)  //update [i,j] with value
 {
-    if(lazy[node]){                             //If node is lazy. First, update the lazy update.
-        tree[node] = r-l+1-tree[node];          //Update this lazy part.
+    if(lazy[node]){                             //If node is lazy. First, update it.
+        tree[node] = r-l+1-tree[node];          //Updated it.
         lazy[node] = false;                     //Updated this node, not lazy now.
         lazy[node*2] = !lazy[node*2];           //Do not update children, propagate the laziness.
         lazy[(node*2)+1] = !lazy[(node*2)+1];
