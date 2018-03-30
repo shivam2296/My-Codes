@@ -1,5 +1,4 @@
  //@$hivam
-//Koi toh rok lo...!!!
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -37,8 +36,7 @@ void fibo(long long n)
 }
 int main()
 {
-
-    ll n;
+    long long n;
     cout<<"Enter n: ";
     cin>>n;
     assert(n>0);
